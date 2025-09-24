@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dark Mode Toggle</title>
+<style>
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #111111;
+    }
+
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin-top: 20px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #4f46e5;
+        color: white;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #4338ca;
+    }
+</style>
+</head>
+<body>
+
+    <h1>Simple Dark Mode Toggle</h1>
+    <p>Click the button to switch between light and dark mode.</p>
+    <button id="toggle">Toggle Dark Mode</button>
+
+    <script>
+        const button = document.getElementById('toggle');
+        let darkMode = false;
+
+        button.addEventListener('click', () => {
+        darkMode = !darkMode;
+        if(darkMode){
+            document.documentElement.style.setProperty('--bg-color', '#111827');
+            document.documentElement.style.setProperty('--text-color', '#f9fafb');
+        } else {
+            document.documentElement.style.setProperty('--bg-color', '#ffffff');
+            document.documentElement.style.setProperty('--text-color', '#111111');
+        }
+        });
+    </script>
+
+</body>
+</html>

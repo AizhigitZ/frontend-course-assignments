@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 2 - Assignment 20</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        canvas {
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Canvas Drawing Example</h1>
+
+    <canvas id="myCanvas" width="400" height="300"></canvas>
+
+    <script>
+
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+
+        ctx.fillStyle = '#4CAF50';
+        ctx.fillRect(50, 50, 150, 100); // x, y, width, height
+
+        ctx.beginPath();
+        ctx.arc(300, 150, 50, 0, Math.PI * 2); // x, y, radius, startAngle, endAngle
+        ctx.fillStyle = '#FF5722';
+        ctx.fill();
+        ctx.closePath();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple PWA</title>
+<link rel="manifest" href="manifest.json">
+<style>
+  body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+  h1 { color: #4f46e5; }
+</style>
+</head>
+<body>
+<h1>Simple PWA</h1>
+<p>This page works offline after visiting once.</p>
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(() => console.log('Service Worker Registered'))
+    .catch(err => console.log('Service Worker Failed:', err));
+}
+</script>
+</body>
+</html>

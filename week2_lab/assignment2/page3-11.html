@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Parallax Effect</title>
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  color: white;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.parallax {
+  background-image: url('https://picsum.photos/1920/1080?blur=2');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.normal {
+  background: #4f46e5;
+}
+</style>
+</head>
+<body>
+
+<div class="section parallax">Parallax Section</div>
+<div class="section normal">Normal Section</div>
+<div class="section parallax">Another Parallax</div>
+<div class="section normal">End Section</div>
+
+</body>
+</html>

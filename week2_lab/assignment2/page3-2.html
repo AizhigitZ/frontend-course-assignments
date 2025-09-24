@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Responsive Navbar</title>
+<style>
+body{margin:0;font-family:Arial, sans-serif;}
+nav{
+  background:#333;
+  color:#fff;
+  padding:0 20px;
+}
+.navbar{
+  max-width:900px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:60px;
+}
+.logo{font-weight:bold;font-size:20px;}
+.menu{list-style:none;display:flex;gap:20px;}
+.menu a{color:#fff;text-decoration:none;}
+.menu a:hover{color:#66b3ff;}
+.hamburger{display:none;flex-direction:column;cursor:pointer;width:25px;}
+.hamburger span{background:#fff;height:3px;margin:4px 0;border-radius:2px;}
+#toggle{display:none;}
+
+@media(max-width:768px){
+  .menu{
+    position:absolute;
+    top:60px;left:0;right:0;
+    background:#444;
+    flex-direction:column;
+    align-items:center;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s;
+  }
+  #toggle:checked ~ .menu{max-height:250px;}
+  .hamburger{display:flex;}
+  #toggle:checked + .hamburger span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+  #toggle:checked + .hamburger span:nth-child(2){opacity:0;}
+  #toggle:checked + .hamburger span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="navbar">
+    <div class="logo">MySite</div>
+    <input type="checkbox" id="toggle">
+    <label for="toggle" class="hamburger">
+      <span></span><span></span><span></span>
+    </label>
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main style="padding:40px;text-align:center;">
+  <h1>Simple Responsive Navbar</h1>
+  <p>Resize the window to see the hamburger menu.</p>
+</main>
+
+</body>
+</html>

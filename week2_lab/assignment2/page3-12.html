@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sticky Sidebar SPA</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+}
+
+aside {
+  position: sticky;
+  top: 0;
+  width: 200px;
+  height: 100vh;
+  background: #111827;
+  color: white;
+  padding: 20px;
+}
+
+aside a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 10px 0;
+}
+
+aside a:hover {
+  color: #60a5fa;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+section {
+  height: 100vh;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #f3f4f6;
+  border-radius: 8px;
+}
+
+#section1 { background: #4f46e5; color: white; }
+#section2 { background: #10b981; color: white; }
+#section3 { background: #f59e0b; color: white; }
+#section4 { background: #ef4444; color: white; }
+</style>
+</head>
+<body>
+
+<aside>
+  <h2>Menu</h2>
+  <a href="#section1">Section 1</a>
+  <a href="#section2">Section 2</a>
+  <a href="#section3">Section 3</a>
+  <a href="#section4">Section 4</a>
+</aside>
+
+<main>
+  <section id="section1">Section 1</section>
+  <section id="section2">Section 2</section>
+  <section id="section3">Section 3</section>
+  <section id="section4">Section 4</section>
+</main>
+
+</body>
+</html>

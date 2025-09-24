@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multilingual Website</title>
+<style>
+  body { font-family: Arial, sans-serif; text-align:center; padding:50px; background:#f3f4f6; }
+  select { padding:8px 12px; font-size:16px; margin-bottom:30px; }
+  h1 { color:#111827; }
+  p { color:#374151; font-size:18px; }
+</style>
+</head>
+<body>
+
+<select id="languageSwitcher">
+  <option value="en" selected>English</option>
+  <option value="es">Español</option>
+  <option value="fr">Français</option>
+</select>
+
+<h1 data-en="Welcome!" data-es="¡Bienvenido!" data-fr="Bienvenue!">Welcome!</h1>
+<p data-en="This is a simple multilingual website." data-es="Este es un sitio web multilingüe simple." data-fr="Ceci est un site Web multilingue simple.">
+  This is a simple multilingual website.
+</p>
+
+<script>
+const switcher = document.getElementById('languageSwitcher');
+const elements = document.querySelectorAll('[data-en]');
+
+switcher.addEventListener('change', () => {
+  const lang = switcher.value;
+  document.documentElement.lang = lang;
+  elements.forEach(el => {
+    el.textContent = el.dataset[lang];
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Blog Layout</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            line-height: 1.8;
+            padding-bottom: 60px;
+        }
+        header, footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 35px;
+            font-size: 10px;
+        }
+        footer {
+            position: fixed;
+            width: 100%;
+            bottom: 0;         
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 10px;
+        }
+        main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px;
+        }
+        article {
+            background: #f4f4f4;
+            padding: 30px;
+            font-size: 16px;
+        }
+        aside {
+            background: #ddd;
+            padding: 30px;
+            font-size: 16px;
+        }
+        h1 {
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+        h2 {
+            font-size: 22px;
+            margin-top: 0;
+        }
+        h3 {
+            font-size: 22px;
+            margin-top: 0;
+        }
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+            footer {
+                position: relative;
+                width: 100%;
+                bottom: 0;
+            }
+            body {
+                padding-bottom: 0; /* Remove padding when footer is not fixed */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Simple Blog</h1>
+        <nav>
+            <a href="#">Home</a> | <a href="#">About</a> | <a href="#">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <h2>Blog Post Title</h2>
+            <p>This is the main content area for your blog post. Add text, images, or other elements here.</p>
+        </article>
+        <aside>
+            <h3>Sidebar</h3>
+            <p>Links, categories, or additional info can go here.</p>
+        </aside>
+    </main>
+    <footer>
+        <p>© 2025 My Blog</p>
+    </footer>
+</body>
+</html>

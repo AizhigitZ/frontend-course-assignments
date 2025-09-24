@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Interactive SVG Graphic</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+			margin-top: 50px;
+		}
+		svg {
+			width: 200px;
+			height: 200px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h2>Interactive SVG Example</h2>
+	<svg id="myCircleSVG" viewBox="0 0 200 200">
+		<circle id="myCircle" cx="100" cy="100" r="80" fill="#3498db" stroke="#222" stroke-width="4" />
+	</svg>
+	<script>
+		const circle = document.getElementById('myCircle');
+		circle.addEventListener('mouseenter', function() {
+			circle.setAttribute('fill', '#e74c3c'); 
+		});
+		circle.addEventListener('mouseleave', function() {
+			circle.setAttribute('fill', '#3498db'); 
+		});
+		circle.addEventListener('click', function() {
+			circle.setAttribute('fill', '#2ecc71');
+		});
+	</script>
+</body>
+</html>

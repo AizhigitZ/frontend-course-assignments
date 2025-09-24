@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 2 - Assignment 13</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        form {
+            max-width: 400px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Contact Us</h1>
+
+    <form aria-label="Contact Form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" aria-required="true" placeholder="Enter your name">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" aria-required="true" placeholder="Enter your email">
+
+        <label for="subject">Subject:</label>
+        <select id="subject" name="subject" aria-required="true">
+            <option value="">Select a subject</option>
+            <option value="feedback">Feedback</option>
+            <option value="support">Support</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" aria-required="true" placeholder="Write your message"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

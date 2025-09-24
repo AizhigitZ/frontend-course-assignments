@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Multi-Step Form</title>
+<style>
+body{
+  font-family:Arial, sans-serif;
+  background:#f5f5f5;
+  display:flex;
+  justify-content:center;
+  padding:40px 10px;
+}
+.form-box{
+  background:#fff;
+  padding:20px;
+  border-radius:8px;
+  width:100%;
+  max-width:400px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+h2{text-align:center;margin-bottom:20px;}
+.progress{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+.progress div{
+  width:30px;height:30px;
+  border-radius:50%;
+  background:#ccc;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:bold;
+}
+.progress .active{background:#4f46e5;}
+.step{display:none;}
+.step.active{display:block;}
+input{
+  width:100%;
+  padding:10px;
+  margin:8px 0 18px;
+  border:1px solid #ccc;
+  border-radius:4px;
+}
+.buttons{display:flex;justify-content:space-between;}
+button{
+  background:#4f46e5;
+  color:#fff;
+  border:none;
+  padding:10px 18px;
+  border-radius:4px;
+  cursor:pointer;
+}
+button:disabled{background:#a5b4fc;cursor:not-allowed;}
+.success{
+  text-align:center;
+  padding:20px;
+  background:#ecfdf5;
+  color:#065f46;
+  border-radius:6px;
+}
+</style>
+</head>
+<body>
+
+<div class="form-box">
+  <h2>Sign Up</h2>
+  <div class="progress">
+    <div class="dot active">1</div>
+    <div class="dot">2</div>
+    <div class="dot">3</div>
+  </div>
+
+  <form id="form">
+    <div class="step active">
+      <input type="text" placeholder="First Name" required>
+      <input type="text" placeholder="Last Name" required>
+      <div class="buttons">
+        <span></span>
+        <button type="button" class="next">Next</button>
+      </div>
+    </div>
+
+    <div class="step">
+      <input type="email" placeholder="Email" required>
+      <input type="tel" placeholder="Phone" required>
+      <div class="buttons">
+        <button type="button" class="prev">Back</button>
+        <button type="button" class="next">Next</button>
+      </div>
+    </div>
+
+    <div class="step">
+      <input type="password" placeholder="Password" required>
+      <input type="password" placeholder="Confirm Password" required>
+      <div class="buttons">
+        <button type="button" class="prev">Back</button>
+        <button type="submit">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  <div id="done" class="success" style="display:none;">
+    ✅ Registration complete!
+  </div>
+</div>
+
+<script>
+const steps = document.querySelectorAll('.step');
+const dots = document.querySelectorAll('.dot');
+let current = 0;
+
+function showStep(n){
+  steps.forEach((s,i)=>s.classList.toggle('active', i===n));
+  dots.forEach((d,i)=>d.classList.toggle('active', i<=n));
+}
+
+document.querySelectorAll('.next').forEach(btn=>{
+  btn.onclick=()=>{
+    const inputs = steps[current].querySelectorAll('input[required]');
+    for(let i of inputs){ if(!i.value.trim()) return; }
+    current++;
+    showStep(current);
+  };
+});
+
+document.querySelectorAll('.prev').forEach(btn=>{
+  btn.onclick=()=>{ current--; showStep(current); };
+});
+
+document.getElementById('form').onsubmit=e=>{
+  e.preventDefault();
+  e.target.style.display='none';
+  document.getElementById('done').style.display='block';
+};
+</script>
+
+</body>
+</html>

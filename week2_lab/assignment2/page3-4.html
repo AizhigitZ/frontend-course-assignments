@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accessible Accordion</title>
+  <style>
+    .accordion {
+      max-width: 600px;
+      margin: 2em auto;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .accordion__item + .accordion__item {
+      border-top: 1px solid #ccc;
+    }
+    .accordion__button {
+      width: 100%;
+      text-align: left;
+      padding: 1em;
+      background: #f7f7f7;
+      border: none;
+      outline: none;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .accordion__button[aria-expanded="true"] {
+      background: #e2e2e2;
+    }
+    .accordion__panel {
+      padding: 1em;
+      display: none;
+      background: #fff;
+    }
+    .accordion__panel[aria-hidden="false"] {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="accordion" role="presentation">
+    <div class="accordion__item">
+      <button
+        class="accordion__button"
+        aria-expanded="false"
+        aria-controls="panel1"
+        id="accordion1"
+      >
+        Section 1
+      </button>
+      <div
+        class="accordion__panel"
+        id="panel1"
+        role="region"
+        aria-labelledby="accordion1"
+        aria-hidden="true"
+        tabindex="0"
+      >
+        Content for section 1.
+      </div>
+    </div>
+    <div class="accordion__item">
+      <button
+        class="accordion__button"
+        aria-expanded="false"
+        aria-controls="panel2"
+        id="accordion2"
+      >
+        Section 2
+      </button>
+      <div
+        class="accordion__panel"
+        id="panel2"
+        role="region"
+        aria-labelledby="accordion2"
+        aria-hidden="true"
+        tabindex="0"
+      >
+        Content for section 2.
+      </div>
+    </div>
+    <div class="accordion__item">
+      <button
+        class="accordion__button"
+        aria-expanded="false"
+        aria-controls="panel3"
+        id="accordion3"
+      >
+        Section 3
+      </button>
+      <div
+        class="accordion__panel"
+        id="panel3"
+        role="region"
+        aria-labelledby="accordion3"
+        aria-hidden="true"
+        tabindex="0"
+      >
+        Content for section 3.
+      </div>
+    </div>
+  </div>
+  <script>
+    const buttons = document.querySelectorAll('.accordion__button');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        buttons.forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          document.getElementById(b.getAttribute('aria-controls')).setAttribute('aria-hidden', 'true');
+        });
+        if (!expanded) {
+          btn.setAttribute('aria-expanded', 'true');
+          document.getElementById(btn.getAttribute('aria-controls')).setAttribute('aria-hidden', 'false');
+        }
+      });
+      btn.addEventListener('keydown', e => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          const idx = Array.from(buttons).indexOf(btn);
+          const nextIdx = e.key === 'ArrowDown'
+            ? (idx + 1) % buttons.length
+            : (idx - 1 + buttons.length) % buttons.length;
+          buttons[nextIdx].focus();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
